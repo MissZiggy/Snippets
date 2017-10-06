@@ -1,6 +1,3 @@
-# Snippets
-Snippets
-
 const _ = require('lodash');
 
 const users = [
@@ -11,15 +8,12 @@ const users = [
  
 
 const filterText = 'cheese';
-
 const filterRegexText = new RegExp(filterText);
-
 const filterColumns = ['favouriteFood', 'secondFavouriteFood'];
 
 const filterQuery = (o) => _.includes(_.toLower(o), _.toLower(filterText));
+const filterQueryUsingRegExp = (o) => filterRegexText.test(o);
 
-const filterRegexQuery = (o) => filterRegexText.test(o);
-
-const filteredUsers = _.filter(users, (o) => _.some(_.pick(o, filterColumns), filterRegexQuery ) );
+const filteredUsers = _.filter(users, (o) => _.some(_.pick(o, filterColumns), filterQueryUsingRegExp ) );
 
 console.log(filteredUsers);
