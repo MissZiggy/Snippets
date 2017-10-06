@@ -11,10 +11,13 @@ const users = [
  
 
 const filterText = 'cheese';
+
 const filterRegexText = new RegExp(filterText);
 
 const filterColumns = ['favouriteFood', 'secondFavouriteFood'];
+
 const filterQuery = (o) => _.includes(_.toLower(o), _.toLower(filterText));
+
 const filterRegexQuery = (o) => filterRegexText.test(o);
 
 const filteredUsers = _.filter(users, (o) => _.some(_.pick(o, filterColumns), filterRegexQuery ) );
